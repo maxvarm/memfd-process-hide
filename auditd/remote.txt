@@ -1,0 +1,31 @@
+demo@ubuntu:/tmp# ./hide
+# remote 127.0.0.1 8888 (received /usr/bin/id binary)
+# remote 127.0.0.1 9999 (received /usr/bin/uname binary)
+root@ubuntu:/tmp# ausearch -k exec -i
+----
+type=PROCTITLE msg=audit(08/27/2023 20:44:37.594:2144) : proctitle=./hide
+type=PATH msg=audit(08/27/2023 20:44:37.594:2144) : item=1 name=/lib64/ld-linux-x86-64.so.2 inode=137645 dev=08:02 mode=file,755 ouid=root ogid=root rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(08/27/2023 20:44:37.594:2144) : item=0 name=./hide inode=526453 dev=08:02 mode=file,777 ouid=demo ogid=demo rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(08/27/2023 20:44:37.594:2144) : cwd=/tmp
+type=EXECVE msg=audit(08/27/2023 20:44:37.594:2144) : argc=1 a0=./hide
+type=SYSCALL msg=audit(08/27/2023 20:44:37.594:2144) : arch=x86_64 syscall=execve success=yes exit=0 a0=0x5565e5edaa90 a1=0x5565e5edb6f0 a2=0x5565e5da1210 a3=0x8 items=2 ppid=10745 pid=13231 auid=demo uid=demo gid=demo euid=demo suid=demo fsuid=demo egid=demo sgid=demo fsgid=demo tty=pts2 ses=1 comm=hide exe=/tmp/hide subj=? key=exec
+----
+type=PROCTITLE msg=audit(08/27/2023 20:44:45.670:2145) : proctitle=./hide
+type=SYSCALL msg=audit(08/27/2023 20:44:45.670:2145) : arch=x86_64 syscall=memfd_create success=yes exit=3 a0=0x555b29c4c008 a1=0x1 a2=0x1 a3=0x1 items=0 ppid=10745 pid=13231 auid=demo uid=demo gid=demo euid=demo suid=demo fsuid=demo egid=demo sgid=demo fsgid=demo tty=pts2 ses=1 comm=hide exe=/tmp/hide subj=? key=exec
+----
+type=PROCTITLE msg=audit(08/27/2023 20:44:45.674:2146) : proctitle=/usr/bin/grep
+type=PATH msg=audit(08/27/2023 20:44:45.674:2146) : item=1 name=/lib64/ld-linux-x86-64.so.2 inode=137645 dev=08:02 mode=file,755 ouid=root ogid=root rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(08/27/2023 20:44:45.674:2146) : item=0 name= inode=1052 dev=00:01 mode=file,777 ouid=demo ogid=demo rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(08/27/2023 20:44:45.674:2146) : cwd=/tmp
+type=EXECVE msg=audit(08/27/2023 20:44:45.674:2146) : argc=1 a0=/usr/bin/grep
+type=SYSCALL msg=audit(08/27/2023 20:44:45.674:2146) : arch=x86_64 syscall=execveat success=yes exit=0 a0=0x3 a1=0x7f35f2e5c46f a2=0x7fffe3e1c7e0 a3=0x7fffe3e1cb58 items=2 ppid=13231 pid=13323 auid=demo uid=demo gid=demo euid=demo suid=demo fsuid=demo egid=demo sgid=demo fsgid=demo tty=pts2 ses=1 comm=3 exe=/memfd:initd (deleted) subj=? key=exec
+----
+type=PROCTITLE msg=audit(08/27/2023 20:46:00.547:2147) : proctitle=./hide
+type=SYSCALL msg=audit(08/27/2023 20:46:00.547:2147) : arch=x86_64 syscall=memfd_create success=yes exit=3 a0=0x555b29c4c008 a1=0x1 a2=0x1 a3=0x1 items=0 ppid=10745 pid=13231 auid=demo uid=demo gid=demo euid=demo suid=demo fsuid=demo egid=demo sgid=demo fsgid=demo tty=pts2 ses=1 comm=hide exe=/tmp/hide subj=? key=exec
+----
+type=PROCTITLE msg=audit(08/27/2023 20:46:00.551:2148) : proctitle=/usr/bin/grep
+type=PATH msg=audit(08/27/2023 20:46:00.551:2148) : item=1 name=/lib64/ld-linux-x86-64.so.2 inode=137645 dev=08:02 mode=file,755 ouid=root ogid=root rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(08/27/2023 20:46:00.551:2148) : item=0 name= inode=1053 dev=00:01 mode=file,777 ouid=demo ogid=demo rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(08/27/2023 20:46:00.551:2148) : cwd=/tmp
+type=EXECVE msg=audit(08/27/2023 20:46:00.551:2148) : argc=1 a0=/usr/bin/grep
+type=SYSCALL msg=audit(08/27/2023 20:46:00.551:2148) : arch=x86_64 syscall=execveat success=yes exit=0 a0=0x3 a1=0x7f35f2e5c46f a2=0x7fffe3e1c7e0 a3=0x7fffe3e1cb58 items=2 ppid=13231 pid=13635 auid=demo uid=demo gid=demo euid=demo suid=demo fsuid=demo egid=demo sgid=demo fsgid=demo tty=pts2 ses=1 comm=3 exe=/memfd:initd (deleted) subj=? key=exec
